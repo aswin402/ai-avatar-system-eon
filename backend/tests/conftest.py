@@ -11,7 +11,7 @@ from main import app
 
 
 # Use in-memory SQLite for tests
-TEST_DATABASE_URL = "sqlite+aiosqlite:///./test.db"
+TEST_DATABASE_URL = "sqlite+aiosqlite:///:memory:"
 
 
 @pytest.fixture(scope="session")

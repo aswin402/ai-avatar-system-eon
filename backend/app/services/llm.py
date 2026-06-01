@@ -104,7 +104,12 @@ class LLMService:
         if self.provider == "anthropic":
             self.client = anthropic.AsyncAnthropic(api_key=settings.ANTHROPIC_API_KEY)
         elif self.provider == "openai":
-            self.client = openai.AsyncOpenAI(api_key=settings.OPENAI_API_KEY)
+            import os
+            base_url = os.environ.get("OPENAI_BASE_URL") or None
+            self.client = openai.AsyncOpenAI(
+                api_key=settings.OPENAI_API_KEY,
+                base_url=base_url
+            )
 
     # ── non-streaming ────────────────────────────────────────────────────────
 
